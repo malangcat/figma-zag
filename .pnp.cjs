@@ -39,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vanilla-extract/css", "npm:1.7.3"],\
             ["@vanilla-extract/recipes", "virtual:2aec62c3d296f29d2efa95c18eb4ced052181beed802153352cc6ab86eb7df2df13c030943b9fb4b88def01bb8c7f293362627ae6a466eb84436597fd4c5151d#npm:0.2.5"],\
             ["@vanilla-extract/webpack-plugin", "virtual:2aec62c3d296f29d2efa95c18eb4ced052181beed802153352cc6ab86eb7df2df13c030943b9fb4b88def01bb8c7f293362627ae6a466eb84436597fd4c5151d#npm:2.1.12"],\
+            ["@zag-js/checkbox", "npm:0.1.6"],\
             ["@zag-js/range-slider", "npm:0.1.14"],\
             ["@zag-js/react", "virtual:2aec62c3d296f29d2efa95c18eb4ced052181beed802153352cc6ab86eb7df2df13c030943b9fb4b88def01bb8c7f293362627ae6a466eb84436597fd4c5151d#npm:0.1.16"],\
             ["@zag-js/slider", "npm:0.1.14"],\
@@ -726,6 +727,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@xtuc-long-npm-4.2.2-37236e6d72-8ed0d477ce.zip/node_modules/@xtuc/long/",\
           "packageDependencies": [\
             ["@xtuc/long", "npm:4.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@zag-js/checkbox", [\
+        ["npm:0.1.6", {\
+          "packageLocation": "./.yarn/cache/@zag-js-checkbox-npm-0.1.6-c785eefb7c-2555a7141b.zip/node_modules/@zag-js/checkbox/",\
+          "packageDependencies": [\
+            ["@zag-js/checkbox", "npm:0.1.6"],\
+            ["@zag-js/core", "npm:0.1.10"],\
+            ["@zag-js/types", "npm:0.2.5"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1880,6 +1892,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vanilla-extract/css", "npm:1.7.3"],\
             ["@vanilla-extract/recipes", "virtual:2aec62c3d296f29d2efa95c18eb4ced052181beed802153352cc6ab86eb7df2df13c030943b9fb4b88def01bb8c7f293362627ae6a466eb84436597fd4c5151d#npm:0.2.5"],\
             ["@vanilla-extract/webpack-plugin", "virtual:2aec62c3d296f29d2efa95c18eb4ced052181beed802153352cc6ab86eb7df2df13c030943b9fb4b88def01bb8c7f293362627ae6a466eb84436597fd4c5151d#npm:2.1.12"],\
+            ["@zag-js/checkbox", "npm:0.1.6"],\
             ["@zag-js/range-slider", "npm:0.1.14"],\
             ["@zag-js/react", "virtual:2aec62c3d296f29d2efa95c18eb4ced052181beed802153352cc6ab86eb7df2df13c030943b9fb4b88def01bb8c7f293362627ae6a466eb84436597fd4c5151d#npm:0.1.16"],\
             ["@zag-js/slider", "npm:0.1.14"],\

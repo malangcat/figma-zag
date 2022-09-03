@@ -17,6 +17,10 @@ export function requestCreateSlider() {
   parent.postMessage({ pluginMessage: { type: "post.createSlider" } }, "*");
 }
 
+export function requestCreateCheckbox() {
+  parent.postMessage({ pluginMessage: { type: "post.createCheckbox" } }, "*");
+}
+
 export function requestSetPart(part: string) {
   parent.postMessage(
     { pluginMessage: { type: "post.selected.part", part } },
@@ -38,6 +42,9 @@ export function requestSetTextFromApi(key: string) {
   );
 }
 
-export function requestTree() {
-  parent.postMessage({ pluginMessage: { type: "get.selected.tree" } }, "*");
+export function requestComponentSpec() {
+  parent.postMessage(
+    { pluginMessage: { type: "get.selected.componentSpec" } },
+    "*",
+  );
 }

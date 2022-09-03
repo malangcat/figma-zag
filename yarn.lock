@@ -533,6 +533,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zag-js/checkbox@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@zag-js/checkbox@npm:0.1.6"
+  dependencies:
+    "@zag-js/core": 0.1.10
+    "@zag-js/types": 0.2.5
+  checksum: 2555a7141bbf090d68956838f8b5432af18946dace2438476efe879721e2990b19409cb7d3c0790a0c02763dad172d40e24f6e217837dcbf08c3bf085f98714d
+  languageName: node
+  linkType: hard
+
 "@zag-js/core@npm:0.1.10":
   version: 0.1.10
   resolution: "@zag-js/core@npm:0.1.10"
@@ -1491,6 +1501,7 @@ __metadata:
     "@vanilla-extract/css": ^1.7.0
     "@vanilla-extract/recipes": ^0.2.4
     "@vanilla-extract/webpack-plugin": ^2.1.8
+    "@zag-js/checkbox": ^0.1.6
     "@zag-js/range-slider": ^0.1.14
     "@zag-js/react": ^0.1.16
     "@zag-js/slider": ^0.1.14

@@ -7,3 +7,8 @@ export interface TreeNode {
   textFromApi: string | undefined;
   style: CSSProperties;
 }
+
+export interface ComponentSpec {
+  component: string;
+  treePerState: Record<string, TreeNode>;
+}

@@ -1,10 +1,5 @@
-import { buildTree } from "./build";
-import {
-  createSliderTemplate,
-  setPart,
-  setState,
-  setTextFromApi,
-} from "./template";
+import { buildComponentSpec } from "./build";
+import { createTemplate, setPart, setState, setTextFromApi } from "./template";
 
 figma.on("run", async ({ command }: RunEvent) => {
   if (command === "open") {
@@ -14,7 +9,10 @@ figma.on("run", async ({ command }: RunEvent) => {
 
 const messageHandler = async (msg: any) => {
   if (msg.type === "post.createSlider") {
-    createSliderTemplate();
+    createTemplate("slider");
+  }
+  if (msg.type === "post.createCheckbox") {
+    createTemplate("checkbox");
   }
   if (msg.type === "post.selected.part") {
     const node = figma.currentPage.selection[0];
@@ -34,11 +32,14 @@ const messageHandler = async (msg: any) => {
       setTextFromApi(node, msg.key);
     }
   }
-  if (msg.type === "get.selected.tree") {
+  if (msg.type === "get.selected.componentSpec") {
     const node = figma.currentPage.selection[0];
     if (node && (node.type === "FRAME" || node.type === "COMPONENT_SET")) {
-      const result = buildTree(node);
-      figma.ui.postMessage({ type: "get.selected.tree", message: result });
+      const result = buildComponentSpec(node);
+      figma.ui.postMessage({
+        type: "get.selected.componentSpec",
+        message: result,
+      });
     }
   }
 };

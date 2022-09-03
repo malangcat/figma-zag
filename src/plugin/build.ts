@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
-import { TreeNode } from "../shared/tree";
-import { componentDatas } from "./template";
+import { ComponentSpec, TreeNode } from "../shared/tree";
+import { componentDatas } from "./data";
 
 const justifyContentCssValues = {
   MIN: "flex-start",
@@ -171,8 +171,10 @@ function getNodeStyle(node: SceneNode): CSSProperties {
   return {};
 }
 
-export function buildTree(root: FrameNode | ComponentSetNode) {
-  const result: Record<string, TreeNode> = {};
+export function buildComponentSpec(
+  root: FrameNode | ComponentSetNode,
+): ComponentSpec {
+  const treePerState: Record<string, TreeNode> = {};
   const component = root.getPluginData("component");
 
   for (const child of root.children) {
@@ -206,8 +208,11 @@ export function buildTree(root: FrameNode | ComponentSetNode) {
       };
     }
 
-    result[state] = rec(child);
+    treePerState[state] = rec(child);
   }
 
-  return result;
+  return {
+    component,
+    treePerState,
+  };
 }

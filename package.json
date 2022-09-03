@@ -8,6 +8,7 @@
   "dependencies": {
     "@vanilla-extract/css": "^1.7.0",
     "@vanilla-extract/recipes": "^0.2.4",
+    "@zag-js/checkbox": "^0.1.6",
     "@zag-js/range-slider": "^0.1.14",
     "@zag-js/react": "^0.1.16",
     "@zag-js/slider": "^0.1.14",

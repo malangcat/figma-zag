@@ -1,53 +1,55 @@
-import { CSSProperties } from "react";
+import { componentDatas } from "./data";
 
-export function createSliderTemplate() {
-  const root = figma.createFrame();
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-  const label = figma.createText();
-  const control = figma.createFrame();
-  const track = figma.createFrame();
-  const range = figma.createFrame();
-  const thumb = figma.createFrame();
-  const input = figma.createFrame();
-  const output = figma.createText();
+export function createTemplate(component: string) {
+  const data = componentDatas[component];
+  const parts = Object.keys(data.elementType);
+  const components: ComponentNode[] = [];
 
-  root.name = "Root";
-  root.fills = [];
-  root.setPluginData("part", "root");
-  root.setPluginData("component", "slider");
+  function createTemplate(state: string) {
+    const nodes: Record<string, SceneNode> = {};
 
-  label.name = "Label";
-  label.setPluginData("part", "label");
-  root.appendChild(label);
+    parts.forEach((part) => {
+      if (data.figmaNodeType[part] === "COMPONENT") {
+        const component = figma.createComponent();
+        component.name = "State=" + capitalize(state);
+        component.fills = [];
+        component.setPluginData("part", part);
+        component.setPluginData("state", state);
+        nodes[part] = component;
+        components.push(component);
+      }
+      if (data.figmaNodeType[part] === "FRAME") {
+        const frame = figma.createFrame();
+        frame.name = capitalize(part);
+        frame.fills = [];
+        frame.setPluginData("part", part);
+        nodes[part] = frame;
+      }
+      if (data.figmaNodeType[part] === "TEXT") {
+        const text = figma.createText();
+        text.name = capitalize(part);
+        text.setPluginData("part", part);
+        nodes[part] = text;
+      }
+      if (data.parent[part]) {
+        const parent = nodes[data.parent[part]!];
+        if (!("children" in parent)) {
+          throw new Error("Parent is not a frame");
+        }
+        parent.appendChild(nodes[part]);
+      }
+    });
+  }
 
-  control.name = "Control";
-  control.fills = [];
-  control.setPluginData("part", "control");
-  root.appendChild(control);
-
-  track.name = "Track";
-  track.fills = [];
-  track.setPluginData("part", "track");
-  control.appendChild(track);
-
-  range.name = "Range";
-  range.fills = [];
-  range.setPluginData("part", "range");
-  track.appendChild(range);
-
-  thumb.name = "Thumb";
-  thumb.fills = [];
-  thumb.setPluginData("part", "thumb");
-  control.appendChild(thumb);
-
-  input.name = "Input";
-  input.fills = [];
-  input.setPluginData("part", "input");
-  thumb.appendChild(input);
-
-  output.name = "Output";
-  output.setPluginData("part", "output");
-  root.appendChild(output);
+  data.states.forEach(createTemplate);
+  const componentSetNode = figma.combineAsVariants(
+    components,
+    figma.currentPage,
+  );
+  componentSetNode.name = capitalize(component);
+  componentSetNode.setPluginData("component", component);
 }
 
 export function setPart(node: SceneNode, part: string) {
@@ -61,30 +63,3 @@ export function setState(node: SceneNode, state: string) {
 export function setTextFromApi(node: SceneNode, key: string) {
   node.setPluginData("textFromApi", key);
 }
-
-interface ComponentData {
-  states: string[];
-  elementType: Record<string, "div" | "button" | "label" | "input" | "output">;
-  ignoredStyles: Record<string, Array<keyof CSSProperties>>;
-}
-
-const slider: ComponentData = {
-  states: ["idle", "focus", "dragging"],
-  elementType: {
-    root: "div",
-    label: "label",
-    control: "div",
-    track: "div",
-    range: "div",
-    thumb: "div",
-    input: "input",
-    output: "output",
-  },
-  ignoredStyles: {
-    range: ["width"],
-  },
-};
-
-export const componentDatas: Record<string, ComponentData> = {
-  slider,
-};
