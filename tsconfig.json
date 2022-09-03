@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["esnext", "dom"],
+    "outDir": "dist",
+    "jsx": "react",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "types": ["@figma/plugin-typings"]
+  }
+}
