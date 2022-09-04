@@ -6,4 +6,4 @@ By mapping data-part to Frame and machine state to Variant, the component can be
 
 ## Limitations
 
-Each variant corresponds to a machine state, so it can't represent the computed state yet.
+Each variant corresponds to a machine state, so it can't represent the computed context yet.
